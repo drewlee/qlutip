@@ -54,7 +54,6 @@ var QluTip = function(){
                 html: '',
                 callback: function(){},
                 className: 'qlutip-default',
-                mode: 'default',
                 xAlign: 'left',
                 yAlign: 'top',
                 xOffset: 0,
@@ -67,15 +66,16 @@ var QluTip = function(){
             
             if($('#qlutip_overlay').length){
                 this.destroy();
-                if(this.st.mode == 'toggle'){return;}
+                if(this.instance == $el[0]){return;}
             }
-
+            
+            this.instance = $el[0];
             build.call(this);
             append.call(this);
             bindClickToDoc.call(this);
         },
         
-        destroy: function(){ console.log('fire');
+        destroy: function(){
             var _this = QluTip;
             _this.$ct.fadeOut(_this.st.speed, function(){$(this).remove();});
             $doc.unbind('click', _this.destroy);
