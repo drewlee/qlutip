@@ -16,7 +16,7 @@ var QluTip = function(){
         this.$ct = $(this.st.html);
         
         this.$ct.appendTo(document.body)
-            .fadeIn(this.st.speed)
+            [this.st.effect[0]](this.st.speed)
             .css({
                 top: getPositions.call(this, 'top'),
                 left: getPositions.call(this, 'left')
@@ -58,6 +58,7 @@ var QluTip = function(){
                 yAlign: 'top',
                 xOffset: 0,
                 yOffset: 0,
+				effect: ['fadeIn', 'fadeOut'],
                 speed: 250
             };
             this.$el = $el;
@@ -77,7 +78,7 @@ var QluTip = function(){
         
         destroy: function(){
             var _this = QluTip;
-            _this.$ct.fadeOut(_this.st.speed, function(){$(this).remove();});
+            _this.$ct[_this.st.effect[1]](_this.st.speed, function(){$(this).remove();});
             $doc.unbind('click', _this.destroy);
         }
     };
