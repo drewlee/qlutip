@@ -58,7 +58,7 @@ var QluTip = function(){
                 yAlign: 'top',
                 xOffset: 0,
                 yOffset: 0,
-				effect: ['fadeIn', 'fadeOut'],
+		effect: ['fadeIn', 'fadeOut'],
                 speed: 250
             };
             this.$el = $el;
