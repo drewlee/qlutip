@@ -2,6 +2,10 @@ var QluTip = function(){
     var $doc;
     
     function build(){
+		if(typeof this.st.html == 'object' && typeof this.st.html != 'string'){
+			this.st.html = this.st.html();
+		}
+		
         var shell = '<div id="qlutip_overlay" class="qlutip-outer ' + this.st.className + '" style="display:none;">'
             + '<div class="qlutip-inner">'
             + '<a class="qlutip-close" href="#"></a>'
@@ -15,7 +19,7 @@ var QluTip = function(){
     function append(){
         this.$ct = $(this.st.html);
         
-        this.$ct.appendTo(document.body)
+        this.$ct.prependTo(document.body)
             [this.st.effect[0]](this.st.speed)
             .css({
                 top: getPositions.call(this, 'top'),
@@ -58,7 +62,7 @@ var QluTip = function(){
                 yAlign: 'top',
                 xOffset: 0,
                 yOffset: 0,
-		effect: ['fadeIn', 'fadeOut'],
+				effect: ['fadeIn', 'fadeOut'],
                 speed: 250
             };
             this.$el = $el;
